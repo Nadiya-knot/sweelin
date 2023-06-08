@@ -342,7 +342,7 @@ textarea {
   --selcet_inner_r: calc(var(--selcet_arrow_size) + var(--selcet_arrow_inner) + 0.556vw);
   --select_height: max(5.820vw, min(10.8vh, 19.2vw));
   --selcet_bg: var(--s2);
-  --select_bdrs: 1.323vw;
+  --select_bdrs: max(1.323vw, min(3.01vh, 5.333vw));
   position: relative;
   height: var(--select_height);
 }
@@ -402,7 +402,7 @@ textarea {
 }
 
 ._select .current.placeholder {
-  font-size: max(1.984vw, min(2.537vh, 4.533vw));
+  font-size: max(2.646vw, min(3.01vh, 5.333vw));
   padding-top: 0.34vw;
 }
 
@@ -437,7 +437,7 @@ textarea {
 
 .select_dropdown li {
   overflow: hidden;
-  padding: max(1.323vw, min(2.09vh, 3.733vw)) max(2.646vw, min(6vh, 10.667vw));
+  padding: max(1.323vw, min(2.09vh, 3.733vw)) max(2.646vw, min(3.01vh, 5.333vw));
   white-space: nowrap;
   text-overflow: ellipsis;
   transition: background-color .23s, color .23s;
@@ -474,7 +474,7 @@ textarea {
   position: absolute;
   top: max(2.21vw, min(4.186vh, 7.467vw));
   left: 0.1vw;
-  font-size: max(1.984vw, min(2.537vh, 4.533vw));
+  font-size: max(2.646vw, min(3.01vh, 5.333vw));
   font-weight: 500;
   line-height: 1;
   cursor: text;
@@ -496,12 +496,12 @@ textarea {
 /* Input radio and checkbox. */
 
 input[type=checkbox] + span {
-  --size: 2.976vw;
+  --size: 45px;
   display: flex;
   align-items: center;
   position: relative;
-  padding-left: 5.159vw;
-  font-size: 1.984vw;
+  padding-left: max(5.159vw, min(11.685vh, 20.8vw));
+  font-size: max(1.984vw, min(2.09vh, 3.733vw));
   font-weight: 500;
   line-height: 1.09;
   cursor: pointer;
@@ -512,15 +512,14 @@ input[type=checkbox] + span:before {
   position: absolute;
   top: calc(50% - var(--size) / 2);
   left: 0;
-  width: 3.241vw;
+  width: 49px;
   height: var(--size);
-  margin-top: -0.1em;
-  border: 0.198vw solid #474747;
+  margin-top: -1px;
+  border: 3px solid #474747;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 1.984vw;
-  border-radius: 0.926vw;
-  /*	cursor: pointer;*/
+  background-size: 30px;
+  border-radius: 14px;
   transition: background-image .43s;
 }
 
@@ -687,6 +686,10 @@ input[type=checkbox]:not([readonly]):checked + span:before {
   z-index: 1;
   transform: translate3d(39vw, 0,0) scale(.9);
   animation: vending .8s both linear;
+}
+
+.vending.horizontal {
+  animation-duration: 0s;
 }
 
 .vending:not(.active) {
@@ -1592,6 +1595,8 @@ input[type=checkbox]:not([readonly]):checked + span:before {
 }
 
 .horizontal .card_li {
+  margin-top: -25vh !important;
+  padding-top: 25vh !important;
   min-height: 50vh;
 }
 
@@ -2021,6 +2026,10 @@ input[type=checkbox]:not([readonly]):checked + span:before {
   width: max(41.005vw, min(45.421vh, 80.853vw));
 }
 
+.horizontal .how_li_info {
+  min-width: 100%;
+}
+
 .how_li_text {
   display: flex;
   align-items: center;
@@ -2221,6 +2230,10 @@ input[type=checkbox]:not([readonly]):checked + span:before {
   line-height: 1;
 }
 
+.form_title i {
+  line-height: 0.1;
+}
+
 .form_caption {
   padding-top: max(3.968vw, min(4.505vh, 8vw));
   font-weight: 500;
@@ -2307,7 +2320,7 @@ input[type=checkbox]:not([readonly]):checked + span:before {
 }
 
 .horizontal .form_checkbox {
-  display: none;
+  order: -1;
 }
 
 /* Form. */
@@ -2484,12 +2497,9 @@ input[type=checkbox]:not([readonly]):checked + span:before {
 }
 
 .horizontal .percent {
-  /*	top: min(36vh, 64vw);*/
   top: auto;
-  /*	left: -30%;*/
   right: calc(100% + min(1.803vh, 3.2vw));
-  bottom: min(29.98vh, 53.333vw);
-  /*	font-size: min(14.693vh, 26.133vw);*/
+  bottom: min(52.5vh, 93.333vw);
   transform: translate3d(0, -50%, 0px);
 }
 
