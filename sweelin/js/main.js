@@ -368,14 +368,15 @@ function sliderStart(activeIndex) {
 		var activeSlide = new Swiper(".machine .machine_active", {
 			initialSlide: activeIndex,
 			slidesPerView: 1,
+			// allowTouchMove = true;
 		});
 
 
-		if ($(window).width() < $(window).height()) {
-			activeSlide.allowTouchMove = true;
-		} else {
-			activeSlide.allowTouchMove = false;
-		}
+		// if ($(window).width() < $(window).height()) {
+		// 	activeSlide.allowTouchMove = true;
+		// } else {
+		// 	activeSlide.allowTouchMove = false;
+		// }
 	}
 
   mainSwiper.on('slideChange', function() {
@@ -921,17 +922,17 @@ function backSection() {
 
 function animateNumberPercent(targetNumber, duration) {
   var $resultElement = $('#percent');
-  var startNumber = 100;
+  var startNumber = 99;
   var increment = (targetNumber - startNumber) / duration * 10;
   var currentValue = startNumber;
 
   $resultElement.fadeIn()
   var anpInterval = setInterval(function() {
     currentValue += Math.floor(increment);
-    $resultElement.text(currentValue);
+    $resultElement.text(currentValue + '%');
     if (currentValue == targetNumber) {
       clearInterval(anpInterval);
-      $resultElement.text(targetNumber);
+      $resultElement.text(targetNumber + '%');
     }
   }, 10);
 }
@@ -1641,11 +1642,11 @@ function scroll_animation(element) {
 // Bar
 
 function bar_toggle() {
-	$('.bar_wrapper').slideToggle();
+	$('.bar_wrapper').toggleClass(a);
 	$('html').toggleClass('hidden');
 }
 
 function bar_close() {
-	$('.bar_wrapper').slideUp();
+	$('.bar_wrapper').removeClass(a);
 	$('html').removeClass('hidden');
 }

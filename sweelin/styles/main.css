@@ -34,7 +34,6 @@
 }
 
 #threeDModel {
-  /*	background-color: cyan;*/
   z-index: 0;
 }
 
@@ -304,7 +303,7 @@ textarea {
   min-height: 0;
   padding-top: max(1.455vw, min(4.035vh, 7.2vw));
   padding-bottom: max(1vw, min(2.405vh, 4.267vw));
-  line-height: 1.2;
+  line-height: 1;
   word-wrap: break-word;
   transition: all .43s;
 }
@@ -314,7 +313,7 @@ textarea {
   padding-top: max(1.455vw, min(4.035vh, 7.2vw));
   padding-bottom: max(1vw, min(2.405vh, 4.267vw));
   font-size: max(2.646vw, min(3.01vh, 5.333vw));
-  line-height: 1.2;
+  line-height: 1;
   opacity: 0;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -500,7 +499,7 @@ input[type=checkbox] + span {
   display: flex;
   align-items: center;
   position: relative;
-  padding-left: max(5.159vw, min(11.685vh, 20.8vw));
+  padding-left: 80px;
   font-size: max(1.984vw, min(2.09vh, 3.733vw));
   font-weight: 500;
   line-height: 1.09;
@@ -520,6 +519,7 @@ input[type=checkbox] + span:before {
   background-repeat: no-repeat;
   background-size: 30px;
   border-radius: 14px;
+  box-sizing: border-box;
   transition: background-image .43s;
 }
 
@@ -533,15 +533,39 @@ input[type=checkbox]:not([readonly]):checked + span:before {
 
 .bar_wrapper {
   overflow: hidden;
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   max-height: calc(100vh);
-  background-color: #B6FDBA;
+  /*	background-color: #B6FDBA;*/
   z-index: 998;
+}
+
+.bar_wrapper:not(.active) {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0s 1s;
+}
+
+.bar_wrapper:before {
+  --size: min(4.505vh, 8vw);
+  content: '';
+  position: absolute;
+  top: min(3.01vh, 5.333vw);
+  right: min(3.01vh, 5.333vw);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background-color: #B6FDBA;
+  z-index: -1;
+  transition: transform .43s .23s;
+}
+
+.bar_wrapper.active:before {
+  transform: scale(80);
+  transition: transform .63s;
 }
 
 .bar_wrapper:not(.horizontal) {
@@ -555,6 +579,7 @@ input[type=checkbox]:not([readonly]):checked + span:before {
   right: min(3.01vh, 5.333vw);
   width: var(--size);
   height: var(--size);
+  transition: transform .43s;
 }
 
 .bar_net {
@@ -566,6 +591,7 @@ input[type=checkbox]:not([readonly]):checked + span:before {
   max-height: 100vh;
   margin-right: -40px;
   padding: 0 calc(var(--bone) + 40px - var(--scroll)) min(4.505vh, 8vw) var(--bone);
+  transition: opacity .43s .23s;
 }
 
 .bar_center {
@@ -579,6 +605,7 @@ input[type=checkbox]:not([readonly]):checked + span:before {
 
 .bar_logo {
   max-width: min(31.343vh, 55.787vw);
+  transition: opacity .43s;
 }
 
 .bar_nav ul {
@@ -587,6 +614,10 @@ input[type=checkbox]:not([readonly]):checked + span:before {
   align-items: center;
   grid-gap: min(5.09vh, 9.067vw);
   font-size: min(4.505vh, 8vw);
+}
+
+.bar_bottom {
+  transition: opacity .43s;
 }
 
 .bar_bottom .footer_hrefs {
@@ -604,6 +635,15 @@ input[type=checkbox]:not([readonly]):checked + span:before {
 
 .bar_bottom .footer_hrefs {
   --color: var(--primary);
+}
+
+.bar_wrapper:not(.active) .bar_close {
+  transform: scale(0) rotate(200grad);
+}
+
+.bar_wrapper:not(.active) .bar_net {
+  opacity: 0;
+  transition: opacity .43s;
 }
 
 /* Bar. */
@@ -747,10 +787,6 @@ input[type=checkbox]:not([readonly]):checked + span:before {
 }
 
 @keyframes vending {
-  70% {
-    transform: translate3d(-2vw, 0px, 0px) scale(.9);
-  }
-
   100% {
     transform: translate3d(0, 0px, 0px);
   }
@@ -1595,8 +1631,8 @@ input[type=checkbox]:not([readonly]):checked + span:before {
 }
 
 .horizontal .card_li {
-  margin-top: -25vh !important;
-  padding-top: 25vh !important;
+  /*	margin-top: -25vh !important;*/
+  /*	padding-top: 25vh !important;*/
   min-height: 50vh;
 }
 
@@ -2667,18 +2703,6 @@ input[type=checkbox]:not([readonly]):checked + span:before {
 
 /* Animation. */
 
-@media only screen and (max-width: 1200px) {
-  /* Root. */
-
-  :root {
-    /* grid. */
-    --grid_4: var(--grid_3);
-    /* grid. */
-  }
-
-  /* Root. */
-}
-
 @media only screen and (max-width: 1030px) {
   /* Bar. */
 
@@ -2690,16 +2714,6 @@ input[type=checkbox]:not([readonly]):checked + span:before {
 }
 
 @media only screen and (max-width: 900px) {
-  /* Root. */
-
-  :root {
-    /* grid. */
-    --grid_3: var(--grid_2);
-    /* grid. */
-  }
-
-  /* Root. */
-
 @keyframes bag {
     0% {
       transform: translate3d(110vw, 50%, 0px) scale(2);
@@ -2755,18 +2769,6 @@ input[type=checkbox]:not([readonly]):checked + span:before {
       transform: translate3d(0, 80vh, 0px);
     }
 }
-}
-
-@media only screen and (max-width: 600px) {
-  /* Root. */
-
-  :root {
-    /* grid. */
-    --grid_2: 1;
-    /* grid. */
-  }
-
-  /* Root. */
 }
 
 @media only screen and (max-width: 0px) {
