@@ -722,7 +722,7 @@ input[type=checkbox]:not([readonly]):checked + span:before {
   pointer-events: none;
   position: fixed;
   top: 0%;
-  left: calc(50% - 100vw / 2 + max(.3vw, min(0.561vh, 1vw)));
+  left: calc(50% - 50vw);
   z-index: 1;
   transform: translate3d(39vw, 0,0) scale(.9);
   animation: vending .8s both linear;
@@ -1025,6 +1025,7 @@ input[type=checkbox]:not([readonly]):checked + span:before {
   left: 50%;
   width: max(16vw, 28.6vh);
   margin-top: min(-1vw, -1.9vh);
+  margin-left: min(-.3vw, max(-0.561vh, -1vw));
   z-index: 1;
   border-radius: max(2.244vw, 4.344vh);
   /*	opacity: 0.5;*/
