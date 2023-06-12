@@ -302,7 +302,7 @@ textarea {
   height: auto;
   min-height: 0;
   padding-top: max(1.455vw, min(4.035vh, 7.2vw));
-  padding-bottom: max(1vw, min(2.405vh, 4.267vw));
+  padding-bottom: 3%;
   line-height: 1;
   word-wrap: break-word;
   transition: all .43s;
@@ -311,12 +311,12 @@ textarea {
 .textarea_text {
   pointer-events: none;
   padding-top: max(1.455vw, min(4.035vh, 7.2vw));
-  padding-bottom: max(1vw, min(2.405vh, 4.267vw));
+  padding-bottom: 3%;
   font-size: max(2.646vw, min(3.01vh, 5.333vw));
   line-height: 1;
   opacity: 0;
   word-wrap: break-word;
-  overflow-wrap: break-word;
+  /*  overflow-wrap: break-word;*/
 }
 
 .input_error {
@@ -539,7 +539,6 @@ input[type=checkbox]:not([readonly]):checked + span:before {
   right: 0;
   bottom: 0;
   max-height: calc(100vh);
-  /*	background-color: #B6FDBA;*/
   z-index: 998;
 }
 
@@ -1076,8 +1075,8 @@ input[type=checkbox]:not([readonly]):checked + span:before {
   justify-content: center;
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
+  left: -1px;
+  right: -1px;
   height: max(7.275vw, 8vh);
   color: #FFECBC;
   font-size: max(1.653vw, 2.5vh);
@@ -1452,12 +1451,6 @@ input[type=checkbox]:not([readonly]):checked + span:before {
   font-weight: 500;
 }
 
-.card.horizontal .card_sugar {
-  margin-left: 0;
-  left: var(--bone);
-  right: auto;
-}
-
 .card_sugar p {
   display: inline;
   position: relative;
@@ -1600,7 +1593,7 @@ input[type=checkbox]:not([readonly]):checked + span:before {
   display: grid;
   justify-content: space-between;
   grid-template-columns: repeat(2, 32.011vw);
-  grid-gap: 30vh 2.646vw;
+  grid-gap: 0 2.646vw;
   padding-bottom: 12vw;
 }
 
@@ -1628,6 +1621,7 @@ input[type=checkbox]:not([readonly]):checked + span:before {
 }
 
 .horizontal .card_list {
+  grid-gap: 30vh 2.646vw;
   padding-bottom: min(29.98vh, 53.333vw);
 }
 
@@ -2277,6 +2271,7 @@ input[type=checkbox]:not([readonly]):checked + span:before {
 }
 
 .form_inputs {
+  grid-template-columns: repeat(2, 45%);
   margin-top: max(2vw, min(2.253vh, 4vw));
 }
 
@@ -2578,7 +2573,7 @@ input[type=checkbox]:not([readonly]):checked + span:before {
   top: 0;
   left: 0;
   right: 0;
-  transform: translate3d(0, -50%, 0px);
+  transform: translate3d(min(-.3vw,max(-.561vh,-1vw)), -50%, 0px);
   transition: opacity .43s;
 }
 
@@ -2770,6 +2765,14 @@ input[type=checkbox]:not([readonly]):checked + span:before {
       transform: translate3d(0, 80vh, 0px);
     }
 }
+}
+
+@media only screen and (max-width: 600px) {
+  .card.horizontal .card_sugar {
+    margin-left: 0;
+    left: var(--bone);
+    right: auto;
+  }
 }
 
 @media only screen and (max-width: 0px) {
